@@ -82,7 +82,7 @@ app.get("/stock/:id", (req, res) => {
 app.post("/edit_stock/:id", (req, res) => {
   const id = req.params.id;
   const sql =
-    "UPDATE stocks SET `name`=?, `quantity`=?, `days_receive_gift`=?, `days_receipt_gift`=?, `description`=?, `card_numbers`=?, `edit_date`=? WHERE id= ?";
+    "UPDATE stocks SET `name`=?, `quantity`=?, `days_receive_gift`=?, `days_receipt_gift`=?, `description`=?, `card_numbers`=?, `date`=?, `edit_date`=? WHERE id= ?";
   const edit_date = new Date().toLocaleDateString();
 
   const values = [
@@ -92,6 +92,7 @@ app.post("/edit_stock/:id", (req, res) => {
     req.body.days_receipt_gift,
     req.body.description,
     req.body.card_numbers,
+    req.body.date,
     edit_date,
     id,
   ];
