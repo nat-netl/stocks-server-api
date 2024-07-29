@@ -46,7 +46,7 @@ app.get("/stocks", (req, res) => {
 // Добавиление акции
 app.post("/add_stock", (req, res) => {
   sql =
-    "INSERT INTO stocks (`name`, `quantity`, `days_receive_gift`, `days_receipt_gift`, `description`, `card_numbers`, `date`, `edit_date`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO stocks (`name`, `quantity`, `days_receive_gift`, `days_receipt_gift`, `description`, `card_numbers`, `date`, `edit_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   const date = new Date().toLocaleDateString();
   const edit_date = 0;
 
