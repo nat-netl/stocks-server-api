@@ -11,10 +11,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "dpg-cqjmteij1k6c739vgv20-a",
-  user: "main_6y1g_user",
-  database: "main_6y1g",
-  password: "XfbQOLYDiL1Pzyu1SMNEnJDKg2o0OwpI",
+  host: process.env.HOST,
+  user: process.env.USER,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
 });
 
 app.get("/", (req, res) => {
