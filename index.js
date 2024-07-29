@@ -4,17 +4,17 @@ const cors = require("cors");
 
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.DB_PORT || 8000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: process.env.HOST,
-  user: process.env.USER,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
 });
 
 app.get("/", (req, res) => {
@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 // Все акции и пагинация
 app.get("/stocks", (req, res) => {
   const { page, limit } = req.query;
-  const offset = (page - 1) * limit;
   let sql = "SELECT count(*) as count FROM stocks";
 
   db.query(sql, (err, data) => {
