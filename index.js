@@ -26,21 +26,11 @@ app.get("/", (req, res) => {
 
 // Все акции и пагинация
 app.get("/stocks", (req, res) => {
-  const { page, limit } = req.query;
-  let sql = "SELECT count(*) as count FROM stocks";
-
-  db.query(sql, (err, data) => {
-    if (err) return res.json({ message: "Error: " + err });
-
-    const totalPage = Math.ceil(+data[0]?.count / limit)
-    console.log (totalPage)
-    sql = `SELECT * FROM stocks`;
-
+  let sql = "SELECT * FROM stocks";
     db.query(sql, (err, data) => {
       if (err) return res.json({ message: "Error: " + err });
-      return res.json({data, pagination: {page: +page, limit: +limit, totalPage} });
+      return res.json({data});
     });
-  });
 });
 
 // Добавиление акции
